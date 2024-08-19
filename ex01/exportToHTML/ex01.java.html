@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>ex01.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ex01.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">javax</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionListener</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">ex01 </span><span class="s2">{</span>
+    <span class="s0">public </span><span class="s1">JPanel mainpanel</span><span class="s2">;</span>
+    <span class="s0">public </span><span class="s1">JTextArea textArea1</span><span class="s2">;</span>
+    <span class="s0">public </span><span class="s1">JTextArea textArea2</span><span class="s2">;</span>
+    <span class="s0">public </span><span class="s1">JRadioButton adicao</span><span class="s2">;</span>
+    <span class="s0">public </span><span class="s1">JRadioButton subtracao</span><span class="s2">;</span>
+    <span class="s0">public </span><span class="s1">JRadioButton divisao</span><span class="s2">;</span>
+    <span class="s0">public </span><span class="s1">JRadioButton multiplicacao</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">ButtonGroup Buttons</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">ex01</span><span class="s2">(){</span>
+        <span class="s1">Buttons </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ButtonGroup</span><span class="s2">();</span>
+        <span class="s1">Buttons</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">adicao</span><span class="s2">);</span>
+        <span class="s1">Buttons</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">subtracao</span><span class="s2">);</span>
+        <span class="s1">Buttons</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">divisao</span><span class="s2">);</span>
+        <span class="s1">Buttons</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">multiplicacao</span><span class="s2">);</span>
+
+        <span class="s1">adicao</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">new </span><span class="s1">OperacaoListener</span><span class="s2">());</span>
+        <span class="s1">subtracao</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">new </span><span class="s1">OperacaoListener</span><span class="s2">());</span>
+        <span class="s1">divisao</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">new </span><span class="s1">OperacaoListener</span><span class="s2">());</span>
+        <span class="s1">multiplicacao</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">new </span><span class="s1">OperacaoListener</span><span class="s2">());</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public class </span><span class="s1">OperacaoListener </span><span class="s0">implements </span><span class="s1">ActionListener </span><span class="s2">{</span>
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+            <span class="s0">try </span><span class="s2">{</span>
+
+                <span class="s0">double </span><span class="s1">num1 </span><span class="s2">= </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">parseDouble</span><span class="s2">(</span><span class="s1">textArea1</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">());</span>
+                <span class="s0">double </span><span class="s1">num2 </span><span class="s2">= </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">parseDouble</span><span class="s2">(</span><span class="s1">textArea2</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">());</span>
+                <span class="s0">double </span><span class="s1">resultado </span><span class="s2">= </span><span class="s3">0</span><span class="s2">;</span>
+
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">adicao</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">()) {</span>
+                    <span class="s1">resultado </span><span class="s2">= </span><span class="s1">num1 </span><span class="s2">+ </span><span class="s1">num2</span><span class="s2">;</span>
+                <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">subtracao</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">()) {</span>
+                    <span class="s1">resultado </span><span class="s2">= </span><span class="s1">num1 </span><span class="s2">- </span><span class="s1">num2</span><span class="s2">;</span>
+                <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">divisao</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">()) {</span>
+                    <span class="s0">if </span><span class="s2">(</span><span class="s1">num2 </span><span class="s2">!= </span><span class="s3">0</span><span class="s2">) {</span>
+                        <span class="s1">resultado </span><span class="s2">= </span><span class="s1">num1 </span><span class="s2">/ </span><span class="s1">num2</span><span class="s2">;</span>
+                    <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+                        <span class="s0">throw new </span><span class="s1">ArithmeticException</span><span class="s2">(</span><span class="s4">&quot;Divisão por zero&quot;</span><span class="s2">);</span>
+                    <span class="s2">}</span>
+                <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">multiplicacao</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">()) {</span>
+                    <span class="s1">resultado </span><span class="s2">= </span><span class="s1">num1 </span><span class="s2">* </span><span class="s1">num2</span><span class="s2">;</span>
+                <span class="s2">}</span>
+
+
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s1">mainpanel</span><span class="s2">, </span><span class="s4">&quot;Resultado: &quot; </span><span class="s2">+ </span><span class="s1">resultado</span><span class="s2">);</span>
+            <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">NumberFormatException ex</span><span class="s2">) {</span>
+
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s1">mainpanel</span><span class="s2">, </span><span class="s4">&quot;Por favor, insira valores válidos.&quot;</span><span class="s2">, </span><span class="s4">&quot;Erro&quot;</span><span class="s2">, </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">ERROR_MESSAGE</span><span class="s2">);</span>
+            <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">ArithmeticException ex</span><span class="s2">) {</span>
+
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s1">mainpanel</span><span class="s2">, </span><span class="s1">ex</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">(), </span><span class="s4">&quot;Erro&quot;</span><span class="s2">, </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">ERROR_MESSAGE</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
